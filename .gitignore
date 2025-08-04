@@ -1,0 +1,50 @@
+# Build output
+bin/
+obj/
+
+# User-specific files
+.vscode/
+.vscode/**
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Core secrets
+secrets.json
+
+# Rider IDE
+.idea/
+
+# Visual Studio Code workspace storage
+.vscode/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+.nuget/
+
+# ASP.NET Core runtime generated files
+wwwroot/lib/
+
+# Entity Framework Migrations
+Migrations/
+
+# PostgreSQL local DB or backups (if any)
+*.bak
+*.backup
+*.sql
+
+# Environment files (if you store connection strings here)
+.env
+.env.*
+
+# Logs
+*.log
+logs/
+
+# Dotnet global tools cache
+.tools/
+
+# Misc
+*.vspscc
