@@ -1,6 +1,153 @@
 @SimpleTaskManager_HostAddress = http://localhost:5158
+@ContentType = application/json
 
-GET {{SimpleTaskManager_HostAddress}}/weatherforecast/
-Accept: application/json
+### Get all tasks
+GET {{SimpleTaskManager_HostAddress}}/api/tasks
+Accept: {{ContentType}}
+
+###
+
+### Get task by ID
+GET {{SimpleTaskManager_HostAddress}}/api/tasks/1
+Accept: {{ContentType}}
+
+###
+
+### Create a new task
+POST {{SimpleTaskManager_HostAddress}}/api/tasks
+Content-Type: {{ContentType}}
+
+{
+  "title": "Complete project documentation",
+  "description": "Write comprehensive documentation for the task manager API",
+  "priority": 4,
+  "dueDate": "2025-08-10T10:00:00Z"
+}
+
+###
+
+### Create another task
+POST {{SimpleTaskManager_HostAddress}}/api/tasks
+Content-Type: {{ContentType}}
+
+{
+  "title": "Review code",
+  "description": "Review the implementation and test all endpoints",
+  "priority": 3,
+  "dueDate": "2025-08-08T15:30:00Z"
+}
+
+###
+
+### Create a simple task
+POST {{SimpleTaskManager_HostAddress}}/api/tasks
+Content-Type: {{ContentType}}
+
+{
+  "title": "Buy groceries",
+  "priority": 2
+}
+
+###
+
+### Create an overdue task for testing
+POST {{SimpleTaskManager_HostAddress}}/api/tasks
+Content-Type: {{ContentType}}
+
+{
+  "title": "Overdue task",
+  "description": "This task is already overdue",
+  "priority": 5,
+  "dueDate": "2025-08-01T10:00:00Z"
+}
+
+###
+
+### Update a task
+PUT {{SimpleTaskManager_HostAddress}}/api/tasks/1
+Content-Type: {{ContentType}}
+
+{
+  "title": "Complete project documentation - UPDATED",
+  "description": "Write comprehensive documentation for the task manager API with examples",
+  "isComplete": false,
+  "priority": 5,
+  "dueDate": "2025-08-09T10:00:00Z"
+}
+
+###
+
+### Mark task as complete
+PATCH {{SimpleTaskManager_HostAddress}}/api/tasks/1/complete
+Accept: {{ContentType}}
+
+###
+
+### Get completed tasks
+GET {{SimpleTaskManager_HostAddress}}/api/tasks/status/true
+Accept: {{ContentType}}
+
+###
+
+### Get pending tasks
+GET {{SimpleTaskManager_HostAddress}}/api/tasks/status/false
+Accept: {{ContentType}}
+
+###
+
+### Get high priority tasks (priority 4)
+GET {{SimpleTaskManager_HostAddress}}/api/tasks/priority/4
+Accept: {{ContentType}}
+
+###
+
+### Get critical priority tasks (priority 5)
+GET {{SimpleTaskManager_HostAddress}}/api/tasks/priority/5
+Accept: {{ContentType}}
+
+###
+
+### Get overdue tasks
+GET {{SimpleTaskManager_HostAddress}}/api/tasks/overdue
+Accept: {{ContentType}}
+
+###
+
+### Get task statistics
+GET {{SimpleTaskManager_HostAddress}}/api/tasks/statistics
+Accept: {{ContentType}}
+
+###
+
+### Delete a task
+DELETE {{SimpleTaskManager_HostAddress}}/api/tasks/3
+
+###
+
+### Test error handling - Get non-existent task
+GET {{SimpleTaskManager_HostAddress}}/api/tasks/999
+Accept: {{ContentType}}
+
+###
+
+### Test validation - Create task with invalid data
+POST {{SimpleTaskManager_HostAddress}}/api/tasks
+Content-Type: {{ContentType}}
+
+{
+  "title": "",
+  "priority": 10
+}
+
+###
+
+### Test validation - Create task with invalid priority
+POST {{SimpleTaskManager_HostAddress}}/api/tasks
+Content-Type: {{ContentType}}
+
+{
+  "title": "Test task",
+  "priority": 0
+}
 
 ###
